@@ -1,0 +1,105 @@
+**{
+    font-family: Hack Nerd Font Mono;
+    /*font-family: Fira Code;*/
+    font-size: 18px;
+}
+window {
+margin: 0px;
+/*border: 1px solid #88c0d0;*/
+background-color: rgba(22, 22, 30, 0.8);
+border-radius: 16px;
+}
+
+#input {
+margin: 7px;
+border: none;
+color: #d8dee9;
+background-color: #3b4252;
+}
+
+#inner-box {
+margin: 7px;
+border: none;
+background-color: rgba(22, 22, 30, 0.0);
+}
+
+#outer-box {
+margin: 7px;
+border: none;
+background-color: rgba(22, 22, 30, 0.0);
+}
+
+#scroll {
+margin: 0px;
+border: none;
+}
+
+#text {
+margin: 5px;
+border: none;
+color: white; 
+/*color: #d8dee9;*/
+}
+
+#entry:selected {
+background-color: #3b4252;
+}
+
+/*================================================*/
+/***{*/
+/*    /*font-family: Hack Nord Font Mono;*/*/
+/*    font-family: Fira Code;*/
+/*    font-size: 19px;*/
+/*}*/
+/**/
+/*window {*/
+/*    margin: 5px;*/
+/*    border: 0px solid white;*/
+/*    /*backgrgound-color: rgba(48, 98, 148, 1.0);*/*/
+/*    border-radius: 15px;*/
+/*}*/
+/**/
+/*#input {*/
+/*    margin: 5px;*/
+/*    border-radius: 0px;*/
+/*    border: none;*/
+/*    border-bottom: 0px solid white;*/
+/*    background-color: #rgba(48, 98, 148, 0.7);*/
+/*    color: white;*/
+/*    /*border-radius: 15px;*/*/
+/*}*/
+/**/
+/*#inner-box {*/
+/*    margin: 5px;*/
+/*    background-color: #rgba(48, 98, 148, 0.7);*/
+/*    /*border-radius: 15px;*/*/
+/*}*/
+/**/
+/*#outer-box {*/
+/*    margin: 5px;*/
+/*    padding:20px;*/
+/*    background-color: #rgba(48, 98, 148, 0.7);*/
+/*    border-radius: 15px;*/
+/*}*/
+/**/
+/*#scroll {*/
+/**/
+/*}*/
+/**/
+/*#text {*/
+/*    margin: 5px;*/
+/*    color: white;*/
+/*    border-radius: 15px;*/
+/*}*/
+/**/
+/*/* #entry:nth-child(even){*/
+/*    background-color: #404552;*/
+/*} */*/
+/**/
+/*#entry:selected {*/
+/*    background-color: #404552;*/
+/*}*/
+/**/
+/*#text:selected {*/
+/*    text-decoration-color: white;*/
+/*}*/
