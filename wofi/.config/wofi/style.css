@@ -1,49 +1,102 @@
-**{
-    font-family: Hack Nerd Font Mono;
-    /*font-family: Fira Code;*/
-    font-size: 18px;
-}
 window {
-margin: 0px;
-/*border: 1px solid #88c0d0;*/
-background-color: rgba(22, 22, 30, 0.8);
-border-radius: 16px;
+  font-family: "DejaVu Sans", "Font Awesome 5 Free";
+  margin: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  background-color: rgba(29, 31, 33, 0.95);
+  border-radius: 10px;
 }
 
 #input {
-margin: 7px;
-border: none;
-color: #d8dee9;
-background-color: #3b4252;
+  margin: 5px;
+  border: none;
+  color: #f8f8f2;
+  background-color: rgba(55, 59, 65, 0.95);
 }
 
 #inner-box {
-margin: 7px;
-border: none;
-background-color: rgba(22, 22, 30, 0.0);
+  margin: 5px;
+  border: none;
+  background-color: transparent;
 }
 
 #outer-box {
-margin: 7px;
-border: none;
-background-color: rgba(22, 22, 30, 0.0);
+  margin: 5px;
+  border: none;
+  background-color: transparent;
 }
 
 #scroll {
-margin: 0px;
-border: none;
+  margin: 0px;
+  border: none;
 }
 
 #text {
-margin: 5px;
-border: none;
-color: white; 
-/*color: #d8dee9;*/
+  margin: 5px;
+  border: none;
+  color: #c5c8c6;
+}
+
+#entry {
+  border: none;
+}
+
+#entry:focus {
+  border: none;
 }
 
 #entry:selected {
-background-color: #3b4252;
+  background-color: rgba(55, 59, 65, 0.95);
+  border-radius: 5px;
+  border: none;
 }
+
+/*=========================================*/
+/***{*/
+/*    font-family: Hack Nerd Font Mono;*/
+/*    /*font-family: Fira Code;*/*/
+/*    font-size: 18px;*/
+/*}*/
+/*window {*/
+/*margin: 0px;*/
+/*/*border: 1px solid #88c0d0;*/*/
+/*background-color: rgba(22, 22, 30, 0.8);*/
+/*border-radius: 16px;*/
+/*}*/
+/**/
+/*#input {*/
+/*margin: 7px;*/
+/*border: none;*/
+/*color: #d8dee9;*/
+/*background-color: #3b4252;*/
+/*}*/
+/**/
+/*#inner-box {*/
+/*margin: 7px;*/
+/*border: none;*/
+/*background-color: rgba(22, 22, 30, 0.0);*/
+/*}*/
+/**/
+/*#outer-box {*/
+/*margin: 7px;*/
+/*border: none;*/
+/*background-color: rgba(22, 22, 30, 0.0);*/
+/*}*/
+/**/
+/*#scroll {*/
+/*margin: 0px;*/
+/*border: none;*/
+/*}*/
+/**/
+/*#text {*/
+/*margin: 5px;*/
+/*border: none;*/
+/*color: white; */
+/*/*color: #d8dee9;*/*/
+/*}*/
+/**/
+/*#entry:selected {*/
+/*background-color: #3b4252;*/
+/*}*/
 
 /*================================================*/
 /***{*/
