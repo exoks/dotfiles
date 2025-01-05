@@ -5,7 +5,7 @@
 #  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 #  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 #  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2025/01/01 13:03:14 by oezzaou
-#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/01/02 17:56:46 by oezzaou
+#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/01/05 22:55:52 by oezzaou
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 #  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 #  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -15,42 +15,64 @@
 #!/bin/bash
 
 # NOTE:> packages 
-hyprpaper="hyprpaper"
-hyprlock="hyprlock"
-waybar="waybar"
-wofi="wofi"
+WALLPAPERS=~/dotfiles/hypr/.config/backgrounds
+SWWW_DAEMON="swww-daemon"
+SWWW="swww"
+DEFAULT=~/.config/backgrounds/Img-9.png
+WAYBAR="waybar"
+ROFI="rofi"
+HYPRLOCK="hyprlock"
+# HYPRPAPER="hyprpaper"
 
-# NOTE:> check if waybar exist otherwise install it
-if ! pacman -Qi $waybar &>/dev/null; then
-  echo "auto_start: $waybar
+# NOTE:> check if WAYBAR exist otherwise install it
+if ! pacman -Qi $WAYBAR &>/dev/null; then
+  echo "auto_start: $WAYBAR
   not found. Installing..."
-  pacman -S --noconfirm $waybar
+  pacman -S --noconfirm $WAYBAR
 else
-  echo "auto_start: $waybar is already installed."
+  echo "auto_start: $WAYBAR is already installed."
 fi
 
-# NOTE:> check if hyprpaper exist otherwise install it
-if ! pacman -Qi $hyprpaper &>/dev/null; then
-  echo "auto_start: $hyprpaper not found. Installing..."
-  pacman -S --noconfirm $hyprpaper
+# # NOTE:> check if HYPRPAPER exist otherwise install it
+# if ! pacman -Qi $HYPRPAPER &>/dev/null; then
+#   echo "auto_start: $HYPRPAPER not found. Installing..."
+#   pacman -S --noconfirm $HYPRPAPER
+# else
+#   echo "auto_start: $HYPRPAPER is already installed."
+# fi
+
+# NOTE:> check if HYPRLOCK exist otherwise install it
+if ! pacman -Qi $HYPRLOCK &>/dev/null; then
+  echo "auto_start: $HYPRLOCK not found. Installing..."
+  pacman -S --noconfirm $HYPRLOCK
 else
-  echo "auto_start: $hyprpaper is already installed."
+  echo "auto_start: $HYPRLOCK is already installed."
 fi
 
-# NOTE:> check if hyprlock exist otherwise install it
-if ! pacman -Qi $hyprlock &>/dev/null; then
-  echo "auto_start: $hyprlock not found. Installing..."
-  pacman -S --noconfirm $hyprlock
+# NOTE:> check if ROFI exist otherwise install it
+if ! pacman -Qi $ROFI &>/dev/null; then
+  echo "auto_start: $ROFI not found. Installing..."
+  pacman -S --noconfirm $ROFI
 else
-  echo "auto_start: $hyprlock is already installed."
+  echo "auto_start: $ROFI is already installed."
 fi
 
-# NOTE:> check if wofi exist otherwise install it
-if ! pacman -Qi $wofi &>/dev/null; then
-  echo "auto_start: $wofi not found. Installing..."
-  pacman -S --noconfirm $wofi
+# NOTE:> Check if SWWW exist otherwise install it
+if ! pacman -Qi $SWWW &>/dev/null; then
+  echo "auto_start: $SWWW not found. Installing..."
+  pacman -S --noconfirm $SWWW
 else
-  echo "auto_start: $wofi is already installed."
+  echo "auto_start: $SWWW is already installed."
+fi
+
+# NOTE:> Ensure swww-daemon is running 
+# HINT:> redirect the output to another file / good way to hide the input
+ps aux | grep -v grep | grep $SWWW_DEAMON > /dev/null
+if [ $? -eq 0 ]; then
+  echo "auto_start: Daemon is already running."
+else
+  echo "auto_start: Daemon is not running."
+  swww-daemon
 fi
 
 # INFO:========================================================================
