@@ -1,4 +1,0 @@
-/* Import color-scheme from `colors` directory */
-
-/* @import "~/.config/rofi/colors/binary.rasi" */
-@import "~/.cache/wal/colors-rofi-dark.rasi"
