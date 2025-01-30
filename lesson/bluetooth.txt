@@ -1,0 +1,50 @@
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣦⣴⣶⣾⣿⣶⣶⣶⣶⣦⣤⣄⠀⠀⠀⠀⠀⠀⠀                                              
+#  ⠀⠀⠀⠀⠀⠀⠀⢠⡶⠻⠛⠟⠋⠉⠀⠈⠤⠴⠶⠶⢾⣿⣿⣿⣷⣦⠄⠀⠀⠀           𓐓  bluetooth.txt 𓐔           
+#  ⠀⠀⠀⠀⠀⢀⠔⠋⠀⠀⠤⠒⠒⢲⠀⠀⠀⢀⣠⣤⣤⣬⣽⣿⣿⣿⣷⣄⠀⠀                                              
+#  ⠀⠀⠀⣀⣎⢤⣶⣾⠅⠀⠀⢀⡤⠏⠀⠀⠀⠠⣄⣈⡙⠻⢿⣿⣿⣿⣿⣿⣦⠀   Student: oezzaou </var/spool/mail/oezzaou> 
+#  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
+#  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
+#  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2025/01/30 07:44:56 by oezzaou
+#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/01/30 07:44:57 by oezzaou
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
+#  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
+#  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
+#  ⠀⠀⠀⠀⠀⡄⠀⠀⠀⠘⢧⡀⠀⠀⠸⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠐⠋⠀⠀⠀                     𓄂 oussama ezzaou𓆃  
+#  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              
+
+> [ Bluetooth from command line ]
+
+  1_INFO: Install bluez bluez-utils
+    bashcmd: sudo pacman -S bluez bluez-utils
+
+  2_INFO: Start & Enable Bluetooth Service
+    systemctl start bluetooth.service
+    systemctl enable bluetooth.service
+
+  3_INFO: Blutooth Managers
+    => KDE:         bluedevil     (UI)
+    => DEs || WM:   blueman       (UI)
+      envoke/bashcmd: blueman-manager
+
+  NOTE: 
+    - Blutooth manager or Xmanager, refers to tool
+    that provide the UI interface for the service 
+
+  4_ INFO: Enable Bluetooth on device 
+    bashcmd: rfkill unblock bluetooth
+      
+      rfkill: is tool used for enabling & disabling wirless divesses
+
+    NOTE:
+      - I used this tools to enable wlan0 interface &
+      bluetooth interface
+
+  5_ INFO: Usage
+    * bashcmd:        bluetoothctl    # launcher bluetooth controler
+    * bluetooth cmd:  power on        # turn on bluetooth
+    * bluetooth cmd: discoverable on  # make your device discoverable 
+    * bluetooth cmd: scan on          # scan for devices 
+    * bluetooth cmd: pair<MAC_ADDR>   # pair with a device
+    * bluetooth cmd: trust<MAC_ADDR>  # trust device
+    * bluetooth cmd: connect<MAC_ADDR># connect to device
+
