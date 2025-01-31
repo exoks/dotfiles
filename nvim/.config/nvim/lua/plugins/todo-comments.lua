@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/12/17 09:28:42 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/01/31 17:42:41 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/01/31 17:47:42 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -27,7 +27,6 @@ return {
         hint = { "DiagnosticHint", "#10B981" },
         default = { "Identifier", "#7C3AED" },
         test = { "Identifier", "#FF00FF" },
-        success = {"Identifier", "#008000"},
       },
       keywords = {
         FIX = {
@@ -35,15 +34,14 @@ return {
           color = "error", -- can be a hex color, or a named color (see below)
          alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "FAILED", "ERROR", },
         },
-        TODO = { icon = "", color = "info", alt = { "INFO", "CONCLUSION", "SUCCESS", "PASSED" } },
+        TODO = { icon = "", color = "info", alt = { "INFO", "CONCLUSION", "SUCCESS", "PASSED",} },
         HACK = { icon = "", color = "warning", alt = { "HACK", "TIP", "TRICK", "HINT" } },
         WARN = { icon = "", color = "warning", alt = { "WARNING", } },
         PERF = { icon = "", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE", "WAIT" } },
-        NOTE = { icon = "", color = "hint", alt = { "NOTE", } },
+        NOTE = { icon = "", color = "hint", alt = { "NOTE", "SOLUTION"} },
         TEST = { icon = "", color = "test", alt = { "TESTING", "REVISION"} },
         DEfAULT = { icon = "", color = "default", alt = { "TESTING", "REVISION"} },
-        SUCCESS = {icon = "", color = "success", alt = {"SOLUTION"}};
-
+        -- SOLUTION:
       },
       search = {
         -- regex that will be used to match keywords.
