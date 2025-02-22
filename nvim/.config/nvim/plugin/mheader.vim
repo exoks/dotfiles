@@ -99,7 +99,7 @@ function! s:line(n)
 	elseif a:n == 3 
 		return s:textline(s:ascii(a:n), '')
 	elseif a:n == 4 " author
-		return s:textline(s:ascii(a:n), "Student: " . s:user() . " <" . s:mail() . "> ")
+		return s:textline(s:ascii(a:n), "Dev: " . s:user() . " <" . s:mail() . "> ")
 	elseif a:n == 5 || a:n == 6
 		return s:textline(s:ascii(a:n), '')
 	elseif a:n == 7 " created
