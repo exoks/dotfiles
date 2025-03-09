@@ -15,16 +15,16 @@ This repository contains my personal configuration files for **Arch Linux**, inc
 
 ### **Structure** ###
 ~/.dotfiles/  
-├── nvim/ ---------- # Neovim configuration  
-├── kitty/ ---------- # Kitty terminal configuration  
+├── nvim/ --------- # Neovim configuration  
+├── kitty/ --------- # Kitty terminal configuration  
 ├── hypr/ --------- # Hyprland configuration  
 ├── tmux/ -------- # Tmux configuration  
-├── zsh/ --------- # Zsh configuration  
-├── rofi/ --------- # Rofi configuration  
-├── waybar/ ---- # Waybar configuration  
-├── wofi/ ------- # Wofi configuration  
-├── neofetch/ -- # Neofetch configuration  
-├── scripts/ ---- # Custom scripts  
+├── zsh/ ---------- # Zsh configuration  
+├── rofi/ ---------- # Rofi configuration  
+├── waybar/ ----- # Waybar configuration  
+├── wofi/ -------- # Wofi configuration  
+├── neofetch/ --- # Neofetch configuration  
+├── scripts/ ----- # Custom scripts  
 
 ### **Usage** ###
 ```bash
