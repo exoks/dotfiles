@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:45:33 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/03/01 12:02:56 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/08/03 18:31:31 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      --
@@ -28,6 +28,10 @@ vim.cmd("set number")
 vim.cmd("set relativenumber")        -- Enable relative line numbers
 vim.cmd("set clipboard=unnamedplus") -- Use the system clipboard
 vim.cmd("set autoindent")            -- Enable automatic indentation
+vim.opt.termguicolors = true
+
+-- create a socket in /tmp/nvim_pywal to communicate with nvim
+vim.fn.serverstart("/tmp/nvim_pywal")
 
 -- INFO::> enable cursor line
 vim.cmd("set cursorline") -- Enable the cursor line
@@ -77,14 +81,17 @@ require('lazy').setup('plugins', {
 -- INFO:> custom key maps
 vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
 
--- TIP::> make neovim inherite transparency from iterm
-vim.cmd [[highlight Normal guibg=NONE]]
-vim.cmd [[highlight NormalNC guibg=NONE]]
-vim.cmd [[highlight VertSplit guibg=NONE]]
-vim.cmd [[highlight StatusLine guibg=NONE]]
-vim.cmd [[highlight StatusLineNC guibg=NONE]]
+vim.keymap.set({'n', 'v'}, "<C-Space>", function()
+	vim.cmd("colorscheme pywal")
+end, { desc = "Reload pywal.nvim colors" })
 
-vim.opt.termguicolors = true
+-- TIP::> make neovim inherite transparency from iterm
+-- vim.cmd [[highlight Normal guibg=NONE]]
+-- vim.cmd [[highlight NormalNC guibg=NONE]]
+-- vim.cmd [[highlight VertSplit guibg=NONE]]
+-- vim.cmd [[highlight StatusLine guibg=NONE]]
+-- vim.cmd [[highlight StatusLineNC guibg=NONE]]
+
 -- ============================================================================
 
 -- CONCLUSION:-----------------------------------------------------------------

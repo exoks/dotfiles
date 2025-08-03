@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              --
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              --
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2024/11/06 14:43:44 by oezzaou--
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/01/02 12:58:13 by oezzaou--
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2025/08/03 17:44:07 by oezzaou--
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              --
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              --
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                     𓆩♕𓆪              --
@@ -15,21 +15,21 @@
 -- ====<[ colorsheme: config ]>================================================
 return {
   -- ===<[ tokyonight config: ]>============================
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-  transparent = true,
-  config = function()
-    require("tokyonight").setup({
-      -- transparent = true, -- Enables transparency for the main editor
-      styles = {
-        -- sidebars = "transparent", -- Transparent background for sidebars like NvimTree
-        -- floats = "transparent", -- Transparent background for floating windows
-      },
-    })
-    vim.cmd.colorscheme("tokyonight-night")
-  end,
+  -- "folke/tokyonight.nvim",
+  -- lazy = false,
+  -- priority = 1000,
+  -- opts = {},
+  -- transparent = true,
+  -- config = function()
+  --   require("tokyonight").setup({
+  --     -- transparent = true, -- Enables transparency for the main editor
+  --     styles = {
+  --       -- sidebars = "transparent", -- Transparent background for sidebars like NvimTree
+  --       -- floats = "transparent", -- Transparent background for floating windows
+  --     },
+  --   })
+  --   vim.cmd.colorscheme("tokyonight-night")
+  -- end,
   -- ===<[ solarized-osaka config: ]>=======================
   -- "craftzdog/solarized-osaka.nvim",
   -- lazy = false,
