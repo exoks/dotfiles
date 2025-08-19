@@ -43,7 +43,7 @@ return {
       },
       highlights = {
         separator = {
-          fg = '#434C5E',
+          -- fg = '#434C5E',
         },
         buffer_selected = {
           bold = true,
