@@ -1,26 +1,3 @@
-"let s:asciiart = [
-"			   \"            ################",
-"			   \"          ####################",
-"			   \"        ########################",
-"			   \"       #############+########### #,
-"			   \"       ######-..        .+########",
-"			   \"       ####-..            ..+#### ",
-"			   \"       ###-...             .-####",
-"			   \"       ###...              ..+##",
-"			   \"        #-.++###.      -###+..##",
-"			   \"        #....  ...   .-.  ....##",
-"			   \"     --.#.-#+## -..  -+ ##-#-.-...",
-"			   \"      ---....... ..  ........... -",
-"			   \"      -+#..     ..   .       .+-.",
-"			   \"       .--.     .     .     ..+.",
-"			   \"         -..    .+--.-.     ...",
-"			   \"         +.... .-+#.#+.    ..-",
-"			   \"          +...#####-++###-..-",
-"			   \"          #---..----+--.---+##",
-"			   \"        ###-+--.... ....--+#####",
-"			   \"  ##########--#-.......-#-###########",
-"		  	   \]
-
 let s:asciiart = [
 			  \"  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣦⣴⣶⣾⣿⣶⣶⣶⣶⣦⣤⣄⠀⠀⠀⠀⠀⠀⠀",
 			  \"  ⠀⠀⠀⠀⠀⠀⠀⢠⡶⠻⠛⠟⠋⠉⠀⠈⠤⠴⠶⠶⢾⣿⣿⣿⣷⣦⠄⠀⠀⠀",
@@ -49,8 +26,8 @@ let s:types		= {
 			\'\.htm$\|\.html$\|\.xml$':
 			\['<!--', '-->', '*'],
       \'\.lua$':
-      \['--', '--', ''],
-			\'\.js$':
+      \['--', '', ''],
+			\'\.js$\|\.json$':
 			\['//', '', ''],
 			\'\.tex$':
 			\['%', '%', '*'],
@@ -95,11 +72,17 @@ function! s:line(n)
 	if a:n == 1
 		return s:textline(s:ascii(a:n), '')
 	elseif a:n == 2 " filename
-		return s:textline(s:ascii(a:n), "𓐓  " . s:filename() . " 𓐔 " . "          ")
+	   	let l:title = "𓐓 " . s:filename() . " 𓐔"
+		let l:space = max([0, 34 - strdisplaywidth(l:title)])
+		let l:left  = l:space / 2
+		let l:right = l:space - l:left
+		return s:textline(s:ascii(a:n), repeat(' ', l:left) . l:title . repeat(' ', l:right))
+		"return s:textline(s:ascii(a:n), "𓐓  " . s:filename() . " 𓐔 " . "          ")
 	elseif a:n == 3 
 		return s:textline(s:ascii(a:n), '')
 	elseif a:n == 4 " author
-		return s:textline(s:ascii(a:n), "   Eng: " . s:user() . " <" . s:mail() . "> ")
+		return s:textline(s:ascii(a:n), "Engineer: oezzaou <" . s:mail() . ">")
+		"return s:textline(s:ascii(a:n), "Eng: " . s:user() . " <" . s:mail() . "> ")
 	elseif a:n == 5 || a:n == 6
 		return s:textline(s:ascii(a:n), '')
 	elseif a:n == 7 " created
@@ -116,19 +99,19 @@ function! s:line(n)
 endfunction
 
 function! s:user()
-	if exists('g:user42')
-		return g:user42
+	if exists('g:user43')
+		return g:user43
 	endif
-	let l:user = $USER
-	if strlen(l:user) == 0
-		let l:user = "oezzaou"
-	endif
+	"let l:user = $USER
+	"if strlen(l:user) == 0
+	let l:user = "oezzaou"
+	"endif
 	return l:user
 endfunction
 
 function! s:mail()
-	if exists('g:mail42')
-		return g:mail42
+	if exists('g:mail43')
+		return g:mail43
 	endif
 	"let l:mail = $MAIL
 	"if strlen(l:mail) == 0
@@ -182,3 +165,26 @@ endfunction
 command! Mheader call s:Mheader ()
 map <F1> :Mheader<CR>
 autocmd BufWritePre * call s:update ()
+
+"let s:asciiart = [
+"			   \"            ################",
+"			   \"          ####################",
+"			   \"        ########################",
+"			   \"       #############+########### #,
+"			   \"       ######-..        .+########",
+"			   \"       ####-..            ..+#### ",
+"			   \"       ###-...             .-####",
+"			   \"       ###...              ..+##",
+"			   \"        #-.++###.      -###+..##",
+"			   \"        #....  ...   .-.  ....##",
+"			   \"     --.#.-#+## -..  -+ ##-#-.-...",
+"			   \"      ---....... ..  ........... -",
+"			   \"      -+#..     ..   .       .+-.",
+"			   \"       .--.     .     .     ..+.",
+"			   \"         -..    .+--.-.     ...",
+"			   \"         +.... .-+#.#+.    ..-",
+"			   \"          +...#####-++###-..-",
+"			   \"          #---..----+--.---+##",
+"			   \"        ###-+--.... ....--+#####",
+"			   \"  ##########--#-.......-#-###########",
+"		  	   \]
