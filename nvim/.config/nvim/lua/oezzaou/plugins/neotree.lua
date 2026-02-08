@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2026/01/19 19:55:22 by oezzaou
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/01/20 20:27:41 by oezzaou
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/02/08 15:37:35 by oezzaou
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪
@@ -14,30 +14,39 @@
 
 -- ===[ neotree: ]=============================================================
 return {
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-		-- Neotree config / options --
-		opts = {
-			window = {
-				border = "rounded",
-				width = 29, -- width of the tree
-			},
-			-- adding indent lines to neotree --
-			default_component_configs = {
-				indent = {
-					indent_size = 2,
-					padding = 1, -- Adds padding to the left of the tree nodes
-					with_expanders = false, -- Show expand/collapse icons
-				},
-			},
-		},
-		config = function(_, opts)
-			require("neo-tree").setup(opts)
-		end,
-	},
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    -- Neotree config / options --
+    opts = {
+      -- window configuration --
+      window = {
+        border = "rounded",
+        width = 29, -- width of the tree
+      },
+      -- Filesystem configuration:
+      filesystem = {
+        filtered_items = {
+          visible = true,         -- global file system configuration
+          hide_dotfiles = false,  -- dotfiles configs
+          hide_gitignored = false, -- gitignored files
+        },
+      },
+      -- adding indent lines to neotree --
+      default_component_configs = {
+        indent = {
+          indent_size = 2,
+          padding = 1,            -- Adds padding to the left of the tree nodes
+          with_expanders = false, -- Show expand/collapse icons
+        },
+      },
+    },
+    config = function(_, opts)
+      require("neo-tree").setup(opts)
+    end,
+  },
 }
