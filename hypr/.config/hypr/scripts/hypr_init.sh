@@ -5,7 +5,7 @@
 #  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 #  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 #  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2026/01/21 16:31:53 by oezzaou
-#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/01/21 17:48:22 by oezzaou
+#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/05/04 14:14:30 by oezzaou
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 #  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 #  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -17,8 +17,8 @@
 
 # NOTE:> packages 
 WALLPAPERS=~/dotfiles/hypr/.config/backgrounds
-SWWW_DAEMON="swww-daemon"
-SWWW="swww"
+AWWW_DAEMON="awww-daemon"
+AWWW="awww"
 DEFAULT=~/.config/backgrounds/Img-9.png
 WAYBAR="waybar"
 ROFI="rofi"
@@ -58,20 +58,20 @@ else
   echo "auto_start: $ROFI is already installed."
 fi
 
-# NOTE:> Check if SWWW exist otherwise install it
-if ! pacman -Qi $SWWW &>/dev/null; then
-  echo "auto_start: $SWWW not found. Installing..."
-  pacman -S --noconfirm $SWWW
+# NOTE:> Check if AWWW exist otherwise install it
+if ! pacman -Qi $AWWW &>/dev/null; then
+  echo "auto_start: $AWWW not found. Installing..."
+  pacman -S --noconfirm $AWWW
 else
-  echo "auto_start: $SWWW is already installed."
+  echo "auto_start: $AWWW is already installed."
 fi
 
-# NOTE:> Ensure swww-daemon is running 
+# NOTE:> Ensure awww-daemon is running 
 # HINT:> redirect the output to another file / good way to hide the input
-ps aux | grep -v "grep" | grep ${SWWW_DAEMON} > /dev/null
+ps aux | grep -v "grep" | grep ${AWWW_DAEMON} > /dev/null
 if [ $? -eq 0 ]; then
   echo "auto_start: Daemon is already running."
 else
   echo "auto_start: Daemon is not running."
-  swww-daemon
+  awww-daemon
 fi
