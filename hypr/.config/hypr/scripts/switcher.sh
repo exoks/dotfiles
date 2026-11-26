@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣦⣴⣶⣾⣿⣶⣶⣶⣶⣦⣤⣄⠀⠀⠀⠀⠀⠀⠀                                              
 #  ⠀⠀⠀⠀⠀⠀⠀⢠⡶⠻⠛⠟⠋⠉⠀⠈⠤⠴⠶⠶⢾⣿⣿⣿⣷⣦⠄⠀⠀⠀               𓐓 switcher.sh 𓐔          
 #  ⠀⠀⠀⠀⠀⢀⠔⠋⠀⠀⠤⠒⠒⢲⠀⠀⠀⢀⣠⣤⣤⣬⣽⣿⣿⣿⣷⣄⠀⠀                                              
@@ -5,7 +7,7 @@
 #  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀                                              
 #  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇                                              
 #  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2026/01/21 17:34:07 by oezzaou
-#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/05/04 14:18:16 by oezzaou
+#  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/11/26 11:39:51 by oezzaou
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀                                              
 #  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀                                              
 #  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪      
@@ -13,23 +15,33 @@
 #  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              
 
 # ===[ script: switcher ]======================================================
-#!/bin/bash
+set -Eeuo pipefail
 
 # NOTE:> Wallpapers relative path
-wallpapers=~/dotfiles/hypr/.config/backgrounds
+wallpapers="${HOME}/dotfiles/hypr/.config/backgrounds"
 
 # NOTE:> Set a random wallpaper
-random_image=$(find $wallpapers -type f | shuf -n 1)
+if [[ ! -d "$wallpapers" ]]; then
+  printf 'switcher: wallpaper directory not found: %s\n' "$wallpapers" >&2
+  exit 1
+fi
+
+mapfile -d '' images < <(find "$wallpapers" -type f \
+  \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' \) -print0)
+if ((${#images[@]} == 0)); then
+  printf 'switcher: no supported images found in %s\n' "$wallpapers" >&2
+  exit 1
+fi
+random_image=${images[RANDOM % ${#images[@]}]}
 
 # NOTE:> Get wallpaper colors or pallete
-# rm -rf ~/.cache/wal && wal -i $random_image
-wal -i $random_image
+wal -i "$random_image"
 
 # NOTE:> Set new random image in the background
-awww img $random_image --transition-duration 1
+awww img "$random_image" --transition-duration 1
 
 # NOTE:> loop over the nvim sockets and send a `remote message`
-mkdir -p /tmp/nvim
 for sock in /tmp/nvim/*; do
+  [[ -S "$sock" ]] || continue
   nvim --server "$sock" --remote-send ":silent! colorscheme pywal<CR>"
 done
