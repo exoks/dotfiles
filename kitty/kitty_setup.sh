@@ -13,21 +13,35 @@
 #  ⠀⠀⠀⠀⠀⠘⠄⣀⡀⠸⠓⠀⠀⠀⠠⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                              
 
 # ====<[ kitty_setup: script ]>================================================
-#!/bin/bash
+#!/usr/bin/env bash
 
-KITTY_PKG="kitty"
+set -Eeuo pipefail
 
-# INFO:> Ensure kitty is installed
-if ! pacman -Qi $KITTY_PKG &>/dev/null; then
-  echo "kitty_setup: $KITTY_PKG not found. Installing..."
-  sudo pacman -S $KITTY_PKG
+readonly KITTY_PKG="kitty"
+readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+readonly TARGET_DIR="${HOME:?HOME must be set}"
+
+die() {
+  printf 'kitty_setup: %s\n' "$*" >&2
+  exit 1
+}
+
+for command in pacman sudo stow; do
+  command -v "$command" >/dev/null 2>&1 || die "required command not found: $command"
+done
+
+# Install Kitty only when pacman reports that it is missing.
+if ! pacman -Qi "$KITTY_PKG" >/dev/null 2>&1; then
+  printf 'kitty_setup: %s is not installed; installing...\n' "$KITTY_PKG"
+  sudo pacman -S --needed -- "$KITTY_PKG"
 else
-  echo "kitty_setup: $KITTY_PKG is already installed."
+  printf 'kitty_setup: %s is already installed.\n' "$KITTY_PKG"
 fi
 
-# INFO:> Stow kitty config & ignore kitty_setup.sh  
-echo "setuping config ..."
-stow --ignore='.*\.sh$' -t ~ . 
-echo " > setup is done :)"
+# Stow this package from its own directory, regardless of the caller's cwd.
+printf 'kitty_setup: linking configuration into %s...\n' "$TARGET_DIR"
+stow --dir="$SCRIPT_DIR" --target="$TARGET_DIR" --ignore='.*\.sh$' .
+
+printf 'kitty_setup: setup complete.\n'
 
 # ============================================================================= 
