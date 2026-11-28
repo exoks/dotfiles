@@ -5,7 +5,7 @@
 --  ⢀⠔⠉⠀⠊⠿⠿⣿⠂⠠⠢⣤⠤⣤⣼⣿⣶⣶⣤⣝⣻⣷⣦⣍⡻⣿⣿⣿⣿⡀
 --  ⢾⣾⣆⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
 --  ⠀⠈⢋⢹⠋⠉⠙⢦⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇       Created: 2026/01/21 17:35:05 by oezzaou
---  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/11/26 16:36:25 by oezzaou
+--  ⠀⠀⠀⠑⠀⠀⠀⠈⡇⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇       Updated: 2026/11/27 10:08:39 by oezzaou
 --  ⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢀⣾⣿⣿⠿⠟⠛⠋⠛⢿⣿⣿⠻⣿⣿⣿⣿⡿⠀
 --  ⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢠⣿⣟⣭⣤⣶⣦⣄⡀⠀⠀⠈⠻⠀⠘⣿⣿⣿⠇⠀
 --  ⠀⠀⠀⠀⠀⠱⠤⠊⠀⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⣿⠏⠀⠀                             𓆩♕𓆪
@@ -95,8 +95,19 @@ hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ to
   { repeating = true, locked = true })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
   { repeating = true, locked = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { repeating = true, locked = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { repeating = true, locked = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 3%+"), { repeating = true, locked = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 3%-"), { repeating = true, locked = true })
+
+-- NOTE:> External monitor brightness via DDC/CI (ddcutil --display 1/2)
+-- SUPER + F7/F8 controls DDC display 1; SUPER + F9/F10 controls DDC display 2.
+hl.bind(super .. " + " .. "F7", hl.dsp.exec_cmd("ddcutil --display 1 setvcp 10 + 5"),
+  { repeating = true, locked = true })
+hl.bind(super .. " + " .. "F8", hl.dsp.exec_cmd("ddcutil --display 1 setvcp 10 - 5"),
+  { repeating = true, locked = true })
+hl.bind(super .. " + " .. "F9", hl.dsp.exec_cmd("ddcutil --display 2 setvcp 10 + 5"),
+  { repeating = true, locked = true })
+hl.bind(super .. " + " .. "F10", hl.dsp.exec_cmd("ddcutil --display 2 setvcp 10 - 5"),
+  { repeating = true, locked = true })
 
 -- NOTE:> Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
